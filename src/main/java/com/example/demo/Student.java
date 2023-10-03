@@ -6,6 +6,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Student")
 public class Student {
+
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -15,12 +16,39 @@ public class Student {
     @GeneratedValue(
             strategy = SEQUENCE,
             generator = "student_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
+    private Long id;
+
+    @Column(
+            name = "first_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String firstName;
+
+    @Column(
+            name = "last_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String lastName;
+
+    @Column(
+            name = "email",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String email;
+
+    @Column(
+            name = "age",
+            nullable = false
 
     )
-    private long id;
-    private String firstName;
-    private String lastname;
-    private String email;
     private Integer age;
 
     public Student(long id,
@@ -30,7 +58,7 @@ public class Student {
                    Integer age) {
         this.id = id;
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastname;
         this.email = email;
         this.age = age;
     }
@@ -52,11 +80,11 @@ public class Student {
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public String getEmail() {
@@ -80,7 +108,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", lastname='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
