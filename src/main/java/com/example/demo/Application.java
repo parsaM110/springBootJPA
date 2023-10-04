@@ -52,6 +52,10 @@ public class Application {
                     21
             ).forEach(System.out::println);
 
+            System.out.println("\u001B[33m" + "Deleting maria 2" + "\u001B[0m");
+
+            System.out.println(studentRepository.deleteStudentById(3L));
+
         };
 
     }
