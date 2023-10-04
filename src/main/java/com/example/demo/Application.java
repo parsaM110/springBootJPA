@@ -40,6 +40,13 @@ public class Application {
                             System.out::println,
                             () -> System.out.println("Student with email ahmed.ali@amigoscode.edu not found"));
 
+            studentRepository.selectStudentWhereFirstNameAndAgeGreater(
+                    "Maria",
+                    21
+            ).forEach(System.out::println);
+
+
+
             studentRepository.selectStudentWhereFirstNameAndAgeGreaterNative(
                     "Maria",
                     21
