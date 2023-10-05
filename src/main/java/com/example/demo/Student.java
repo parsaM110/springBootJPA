@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Entity(name = "Student") // the name we use in jpql
+@Entity(name = "Student") // the name we use in j
 @Table(
         name="student",
         uniqueConstraints = {
