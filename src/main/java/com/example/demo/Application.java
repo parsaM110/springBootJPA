@@ -34,6 +34,9 @@ public class Application {
 
             studentIdCardRepository.save(studentIdCard);
 
+            studentRepository.findById(1L)
+                            .ifPresent(System.out::println);
+
             studentIdCardRepository.findById(1l)
                     .ifPresent(System.out::println);
 

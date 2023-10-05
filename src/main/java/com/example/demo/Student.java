@@ -59,6 +59,9 @@ public class Student {
     )
     private Integer age;
 
+    @OneToOne(mappedBy = "student") //bidirectional connect
+    private StudentIdCard studentIdCard;
+
     public Student(
                    String firstName,
                    String lastname,
