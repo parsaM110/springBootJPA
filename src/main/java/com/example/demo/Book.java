@@ -47,15 +47,15 @@ public class Book {
             nullable = false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name="student_book_fk"
+                    name = "student_book_fk"
             )
     )
     private Student student;
 
-    public Book(String bookName, LocalDateTime createdAt, Student student) {
+    public Book(String bookName, LocalDateTime createdAt) {
         this.bookName = bookName;
         this.createdAt = createdAt;
-        this.student = student;
+
     }
 
     public Book() {
