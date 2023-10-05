@@ -10,7 +10,7 @@ public class Enrolment {
     private EnrolmentId id;
 
     @ManyToOne
-    @MapsId("studentId")
+    @MapsId("studentId") //the name in EnrolmentId
     @JoinColumn(
             name = "student_id"
     )

@@ -78,21 +78,11 @@ public class Student {
     )
     private List<Book> books =  new ArrayList<>();
 
-    @ManyToMany(
-            cascade = {CascadeType.PERSIST,CascadeType.REMOVE}
+    @OneToMany(
+            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
+            mappedBy = "student" //the name in Enrolment
     )
-    @JoinTable(
-            name="enrolment",
-            joinColumns = @JoinColumn(
-                    name="student_id",
-                    foreignKey = @ForeignKey(name = "enrolment_student_id_fk")
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name="course_id",
-                    foreignKey = @ForeignKey(name = "enrolment_course_id_fk")
-            )
-    )
-    private List<Course> courses = new ArrayList<>();
+    private List<Enrolment> enrolments = new ArrayList<>();
 
 
 
@@ -175,18 +165,18 @@ public class Student {
     //Todo : no need setBooks because we already make addBook which is dublicate free
 
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Enrolment> getEnrolments() {
+        return enrolments;
     }
 
-    public void enrolToCourse(Course course){
-        courses.add(course);
-        course.getStudents().add(this);
+    public void addEnrolment(Enrolment enrolment){
+        if(!enrolments.contains(enrolment)){
+            enrolments.add(enrolment);
+        }
     }
 
-    public void unenrolToCourse(Course course){
-        courses.remove(course);
-        course.getStudents().remove(this);
+    public void removeEnrolment(Enrolment enrolment){
+        enrolments.remove(enrolment);
     }
 
     @Override
