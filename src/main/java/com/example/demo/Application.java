@@ -40,12 +40,12 @@ public class Application {
                     "123456789",
                     student);
 
-            studentIdCardRepository.save(studentIdCard);
+            student.setStudentIdCard(studentIdCard);
 
-            /*studentRepository.findById(1L)
-                    .ifPresent(System.out::println);*/
+            studentRepository.save(student);
 
-            //fetch type is lazy in default one2many and many2one so for accessing books you have to :
+//            studentIdCardRepository.save(studentIdCard);
+
 
             studentRepository.findById(1L)
                     .ifPresent(s -> {

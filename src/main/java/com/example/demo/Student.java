@@ -64,7 +64,8 @@ public class Student {
 
     @OneToOne(
             mappedBy = "student",
-            orphanRemoval = true
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST,CascadeType.REMOVE}
     )
     private StudentIdCard studentIdCard;
 
@@ -140,13 +141,20 @@ public class Student {
         }
     }
 
+    public void setStudentIdCard(StudentIdCard studentIdCard){
+        this.studentIdCard = studentIdCard;
+    }
+
+
     public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
+
+//    public void setBooks(List<Book> books) {
+//        this.books = books;
+//    }
+    //Todo : no need setBooks because we already make addBook which is dublicate free
 
     @Override
     public String toString() {
