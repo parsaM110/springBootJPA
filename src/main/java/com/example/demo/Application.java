@@ -42,7 +42,20 @@ public class Application {
 
             studentIdCardRepository.save(studentIdCard);
 
+            /*studentRepository.findById(1L)
+                    .ifPresent(System.out::println);*/
 
+            //fetch type is lazy in default one2many and many2one so for accessing books you have to :
+
+            studentRepository.findById(1L)
+                    .ifPresent(s -> {
+                        System.out.println("\u001B[33m" + "fetch books Lazy..." + "\u001B[0m");
+                        List<Book> books = student.getBooks();
+                        books.forEach(book -> {
+                            System.out.println(s.getFirstName() + " borrowed" + book.getBookName());
+                        });
+
+                    });
         };
 
     }
