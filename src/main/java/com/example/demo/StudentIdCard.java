@@ -39,7 +39,10 @@ public class StudentIdCard {
 
     private String cardNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER //default
+    )
     @JoinColumn(
             name = "student_id",
             referencedColumnName = "id"
@@ -72,5 +75,14 @@ public class StudentIdCard {
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentIdCard{" +
+                "id=" + id +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", student=" + student +
+                '}';
     }
 }
