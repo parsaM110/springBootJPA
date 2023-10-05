@@ -40,6 +40,8 @@ public class Application {
             studentIdCardRepository.findById(1l)
                     .ifPresent(System.out::println);
 
+            studentRepository.deleteById(1L);
+
 
 
         };

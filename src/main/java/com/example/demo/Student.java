@@ -59,7 +59,10 @@ public class Student {
     )
     private Integer age;
 
-    @OneToOne(mappedBy = "student") //bidirectional connect
+    @OneToOne(
+            mappedBy = "student",
+            orphanRemoval = true
+    )
     private StudentIdCard studentIdCard;
 
     public Student(
