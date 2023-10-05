@@ -44,14 +44,15 @@ public class Application {
 
             student.addEnrolment(new Enrolment(
                     new EnrolmentId(1L,1L),
-                    student,new Course("Computer Science",
-                    "IT")
+                    student,new Course("Computer Science", "IT"),
+                    LocalDateTime.now()
             ));
 
             student.addEnrolment(new Enrolment(
                     new EnrolmentId(1L,2L),
                     student,
-                    new Course("Amigosocde Spring DATA JPA","IT")
+                    new Course("Amigosocde Spring DATA JPA","IT"),
+                    LocalDateTime.now().minusDays(18)
             ));
 
 //            student.enrolToCourse(new Course("Computer Science","IT"));
