@@ -3,6 +3,9 @@ package com.example.demo;
 import javax.persistence.*;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Course") // the name we use in j
@@ -39,6 +42,11 @@ public class Course {
     )
     private String department;
 
+    @ManyToMany(
+            mappedBy = "courses"
+    )
+    private List<Student> students = new ArrayList<>();
+
     public Course(String name, String department) {
         this.name = name;
         this.department = department;
@@ -69,6 +77,10 @@ public class Course {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     @Override

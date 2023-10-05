@@ -94,6 +94,8 @@ public class Student {
     )
     private List<Course> courses = new ArrayList<>();
 
+
+
     public Student(
                    String firstName,
                    String lastname,
@@ -171,6 +173,21 @@ public class Student {
 //        this.books = books;
 //    }
     //Todo : no need setBooks because we already make addBook which is dublicate free
+
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void enrolToCourse(Course course){
+        courses.add(course);
+        course.getStudents().add(this);
+    }
+
+    public void unenrolToCourse(Course course){
+        courses.remove(course);
+        course.getStudents().remove(this);
+    }
 
     @Override
     public String toString() {
