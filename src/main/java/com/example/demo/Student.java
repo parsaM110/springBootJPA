@@ -72,7 +72,8 @@ public class Student {
             mappedBy = "student",
             orphanRemoval = true,
 //            cascade = CascadeType.ALL
-            cascade = {CascadeType.PERSIST,CascadeType.REMOVE}
+            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
+            fetch = FetchType.EAGER
     )
     private List<Book> books =  new ArrayList<>();
 
