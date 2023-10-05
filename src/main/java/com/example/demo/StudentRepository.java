@@ -20,11 +20,14 @@ public interface StudentRepository extends PagingAndSortingRepository<Student, L
     @Query("SELECT s from Student s WHERE s.firstName = ?1 AND s.age >= ?2")
     List<Student> selectStudentWhereFirstNameAndAgeGreater(String firstName, Integer age);
 
-
+    @Transactional(
+            readOnly = true //just reading no need for this -> all query by default is transactional
+    )
     @Query(value = "select * from student where first_name = :firstName AND age>= :age", nativeQuery = true)
     List<Student> selectStudentWhereFirstNameAndAgeGreaterNative(
             @Param("firstName") String firstName,
             @Param("age") Integer age);
+
     @Modifying
     @Transactional
     @Query("delete Student u where u.id = ?1")
