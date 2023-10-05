@@ -42,9 +42,21 @@ public class Application {
 
             student.setStudentIdCard(studentIdCard);
 
-            student.enrolToCourse(new Course("Computer Science","IT"));
+            student.addEnrolment(new Enrolment(
+                    new EnrolmentId(1L,1L),
+                    student,new Course("Computer Science",
+                    "IT")
+            ));
 
-            student.enrolToCourse(new Course("Amigosocde Spring DATA JPA","IT"));
+            student.addEnrolment(new Enrolment(
+                    new EnrolmentId(1L,2L),
+                    student,
+                    new Course("Amigosocde Spring DATA JPA","IT")
+            ));
+
+//            student.enrolToCourse(new Course("Computer Science","IT"));
+//
+//            student.enrolToCourse(new Course("Amigosocde Spring DATA JPA","IT"));
 
             studentRepository.save(student);
 
