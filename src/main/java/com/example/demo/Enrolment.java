@@ -13,14 +13,20 @@ public class Enrolment {
     @ManyToOne
     @MapsId("studentId") //the name in EnrolmentId
     @JoinColumn(
-            name = "student_id"
+            name = "student_id",
+            foreignKey = @ForeignKey(
+                    name = "enrolment_student_id"
+            )
     )
     private Student student;
 
     @ManyToOne
     @MapsId("courseId")
     @JoinColumn(
-            name = "course_id"
+            name = "course_id",
+            foreignKey = @ForeignKey(
+                    name = "enrolment_course_id"
+            )
     )
     private Course course;
 
