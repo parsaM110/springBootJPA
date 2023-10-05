@@ -5,11 +5,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
+@Transactional(readOnly = true)
 public interface StudentRepository extends PagingAndSortingRepository<Student, Long> {
 
 
@@ -20,9 +23,7 @@ public interface StudentRepository extends PagingAndSortingRepository<Student, L
     @Query("SELECT s from Student s WHERE s.firstName = ?1 AND s.age >= ?2")
     List<Student> selectStudentWhereFirstNameAndAgeGreater(String firstName, Integer age);
 
-    @Transactional(
-            readOnly = true //just reading no need for this -> all query by default is transactional
-    )
+
     @Query(value = "select * from student where first_name = :firstName AND age>= :age", nativeQuery = true)
     List<Student> selectStudentWhereFirstNameAndAgeGreaterNative(
             @Param("firstName") String firstName,
