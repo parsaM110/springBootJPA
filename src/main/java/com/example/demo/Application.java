@@ -18,13 +18,26 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
+    CommandLineRunner commandLineRunner(
+            StudentRepository studentRepository,
+            StudentIdCardRepository studentIdCardRepository
+            ) {
         return args -> {
+
+            Student student = new Student("Ali","Mohammad","ali@gmail.com",18);
+
+//            studentRepository.save(student); -> you dont need to save the student otherwise you ran into error
+
+            StudentIdCard studentIdCard = new StudentIdCard(
+                    "123456789",
+                    student);
+
+            studentIdCardRepository.save(studentIdCard);
+
 
         };
 
     }
-
 
 
 }
